@@ -1,0 +1,14 @@
+userClass: user
+codeName: MyApp
+template:
+  dir: /home/yisroel/packages/packrat-ts-all/packrat
+  name: null
+  version: 1
+starter: /home/yisroel/packages/head-start-all/head-start.starter
+general:
+  packageName: head-start
+  author: YizYah
+  owner: YizYah
+  repositoryName: head-start
+  license: MIT
+  multi: false
