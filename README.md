@@ -8,8 +8,7 @@
 [//]: # ( ns__start_section intro )
 
 [//]: # ( ns__custom_start description )
-head-start
-======
+![](src/custom/images/headstart.gif)
 project creator: execute a set of standard processes and installations into a directory
 
 [//]: # ( ns__custom_end description )
