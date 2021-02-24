@@ -5,15 +5,14 @@ import {preCommandsTaskList} from './setup/preCommandsTaskList'
 import {interactiveSequence} from './setup/interactiveSequence'
 import {checkFolder} from './checkFolder'
 
-const {docPages, links, suffixes} = require('magicalstrings').constants
+const {docPages, links} = require('magicalstrings').constants
 const Listr = require('listr')
 
 export async function createStarter(
   setupSequence: SetupSequence,
-  codeDir: string,
+  starterDir: string,
   session: any,
 ) {
-  const starterDir = codeDir + suffixes.STARTUP_DIR
   if (!setupSequence) throw new Error('\'generate\' cannot run because ' +
     '\'setupSequence\' is undefined in the config of the template.' +
     ` See ${links.DOCUMENTATION}/${docPages.SETUP}.`)
@@ -33,13 +32,6 @@ export async function createStarter(
         ).filter(x => x !== null)
         return new Listr(preCommandsTasks)
       },
-    },
-    {
-      title: 'Add Meta-Data',
-      task:
-        async () => {
-
-        },
     },
   ]
 
@@ -65,12 +57,12 @@ export async function createStarter(
   try {
     await setup.run()
   } catch (error) {
-    throw new Error(`cannot run setup at ${codeDir}: ${error}`)
+    throw new Error(`cannot run setup at ${starterDir}: ${error}`)
   }
 
   try {
     await installDependencies.run()
   } catch (error) {
-    throw new Error(`cannot install dependencies at ${codeDir}: ${error}`)
+    throw new Error(`cannot install dependencies at ${starterDir}: ${error}`)
   }
 }
