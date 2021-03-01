@@ -1,6 +1,6 @@
 {
   "name": "head-starter",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "project creator: execute a set of standard processes and installations into a directory",
   "main": "lib/index.js",
   "scripts": {
