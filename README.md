@@ -28,18 +28,27 @@ project creator: execute a set of standard processes and installations into a di
 [![Geenee](https://img.shields.io/badge/maintained%20by-geenee-brightgreen)](https://npmjs.org/package/geenee)
 [![Template](https://img.shields.io/badge/template-ts--packrat-blue)](https://npmjs.org/package/ts-packrat)
 
-# Why
+<!-- toc -->
+* [:clipboard: Why](#clipboard-why)
+* [:white_check_mark: What](#white_check_mark-what)
+* [:bulb: How](#bulb-how)
+* [:wrench: Example](#wrench-example)
+* [:zap: Steps to Create a Setup Sequence](#zap-steps-to-create-a-setup-sequence)
+* [:heavy_exclamation_mark: API](#heavy_exclamation_mark-api)
+<!-- tocstop -->
+
+# <a name="clipboard-why"></a>:clipboard: Why
 If you want to create (or let others create) a type project multiple times, you probably execute some common commands and install the latest version of several packages.
 
 In effect, you create a "placeholder" builder for whatever type of app you are templating.  You can think of it as the equivalent of what `create-react-app` is for a React application.
 
-# What
+# <a name="white_check_mark-what"></a>:white_check_mark: What
 An engine for executing a startup sequence.  The sequence is specified within a json that includes 
  specify a set of commands that you normally execute.
 
 You can add this to any sequence. 
 
-# How
+# <a name="bulb-how"></a>:bulb: How
 Install:
 ```
 npm i head-start
@@ -104,10 +113,10 @@ await createStarter(
 * `codeDir` is the path to the directory to create.  If it exists already, an error is thrown.
 * session is a dynamically declared mapping of keys and string values used with [dynamapping](https://www.npmjs.com/package/dynamapping) to replace any instances in `setupSequence`.  Note that `$codeDir` is a special reserved string for the value of `codeDir`.
 
-# Example
+# <a name="wrench-example"></a>:wrench: Example
 It is used inside [geenee](https://www.npmjs.com/package/geenee) templates, where `setupSequence` is including in the `config.yml` file.
 
-# Steps to Create a Setup Sequence
+# <a name="zap-steps-to-create-a-setup-sequence"></a> :zap:Steps to Create a Setup Sequence
 
 ---
  **_Note_**  You can use [copykat](https://www.npmjs.com/package/copykat) to guide you through the process of creating a full [geenee](https://www.npmjs.com/package/geenee) template, including the the startup sequence.  You can even do that and then copy the `startupSequence` from the config.yml file of the generated template.
@@ -188,7 +197,7 @@ If need be, you can of course hardcode the version of a package listed in `mainI
 
 
 [//]: # ( ns__custom_start APIIntro )
-# API
+# <a name="heavy_exclamation_mark-api"></a>:heavy_exclamation_mark: API
 
 [//]: # ( ns__custom_end APIIntro )
 
