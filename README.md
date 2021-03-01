@@ -31,6 +31,8 @@ project creator: execute a set of standard processes and installations into a di
 # Why
 If you want to create (or let others create) a type project multiple times, you probably execute some common commands and install the latest version of several packages.
 
+In effect, you create a "placeholder" builder for whatever type of app you are templating.  You can think of it as the equivalent of what `create-react-app` is for a React application.
+
 # What
 An engine for executing a startup sequence.  The sequence is specified within a json that includes 
  specify a set of commands that you normally execute.
@@ -104,6 +106,78 @@ await createStarter(
 
 # Example
 It is used inside [geenee](https://www.npmjs.com/package/geenee) templates, where `setupSequence` is including in the `config.yml` file.
+
+# Steps to Create a Setup Sequence
+
+---
+ **_Note_**  You can use [copykat](https://www.npmjs.com/package/copykat) to guide you through the process of creating a full [geenee](https://www.npmjs.com/package/geenee) template, including the the startup sequence.  You can even do that and then copy the `startupSequence` from the config.yml file of the generated template.
+
+---
+
+See the [config file for the sample template](https://github.com/YizYah/basicNsFrontTemplate/blob/master/config.yml) as a model.
+
+There are four keys under `setupSequence`:
+1. `interactive`
+
+2. `preCommands`
+
+3. `mainInstallation`
+
+4. `devInstallation`
+
+Each is discussed in its own section.
+
+## **`interactive`**
+You may start the process of generating code by running any number of interactive programs. These can even be bash scripts included in your template file.  You specify a list, and they get executed in the same order.  For each, provide:
+
+* `file` the name of the command or bash script that you want to execute.  (Note: `npx` is usually the best option for a released package.  That lets you get the latest version and removes the need for a template user to have something installed globally. So, rather than running `oclif`, you would run `npx` and make `oclif` the first argument)
+
+* `arguments` the list of arguments passed into the command.  These are strings.
+
+  There is currently one general variable that you can use in `arguments`: `$codeDir`.  The value of `$codeDir` is whatever the name of the code base that gets passed by the user to `ns generate`.
+
+* `options` an optional list of the options for [child_process](https://nodejs.org/api/child_process.html).
+
+An example of an `interactive` entry would be this:
+
+```handlebars
+setupSequence:
+    ...
+    interactive:
+       - file: npx
+         arguments:
+           - oclif
+           - multi
+           - $codeDir
+``` 
+
+This list consists of a single command--running `oclif` using `npx`.  The name that gets passed to oclif as an argument should be replaced by the name of your `$SAMPLE` code.
+
+All of the `interactive` list will be executed in order.  The user will have the opportunity to insert anything needed as prompted.
+
+**_Note_** It is actually better to insert any command that is *not* interactive [that executes without user interactions] under `precommands` as specified below.  It is better to have multiple templates that leave as little as possible up to the user running `ns generate`.  The only reason for `interactive` is that some programs do not allow you to specify options programmatically, so you have to run them interactively.
+
+##  **`preCommands`**
+This is a list of *un*interactive files or programs that get executed automatically in the order that you place them.
+* A `title` will show up when your template user watches the progress from the command prompt.
+* The same 3 keys shown in `interactive` above: `file`, `arguments` and perhaps `options`.
+
+The purpose of `preCommands` is to run tools like `createReactApp`.  Note that you could create a bash script, stored in your template directory, to execute.  So you have the ability to run whatever sequence you like.
+
+## **`mainInstallation`**
+This is an array of packages that get installed by `npm`. See the [sample config file](https://github.com/YizYah/basicNsFrontTemplate/blob/master/config.yml).
+
+## **`devInstallation`**
+An array of packages that get installed by `npm` for dev.
+
+Again, see the [sample config file](https://github.com/YizYah/basicNsFrontTemplate/blob/master/config.yml).
+
+## Leaving Versions Dynamic
+A big goal of `geenee` is to let you have the latest of everything in your stack, so we encourage this approach rather than providing a hardcoded `package.json` file. On the debit side, you need to be sure to update any code if conflicts arise with the latest versions of packages used.
+
+If need be, you can of course hardcode the version of a package listed in `mainInstallation` or
+`devInstallation`, e.g. `'@apollo/react-hoc@3.1.5'` in the [config file for the sample template](https://github.com/YizYah/basicNsFrontTemplate/blob/master/config.yml).
+
 
 [//]: # ( ns__custom_end badges )
 
