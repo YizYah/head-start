@@ -38,7 +38,7 @@ project creator: execute a set of standard processes and installations into a di
 <!-- tocstop -->
 
 # <a name="clipboard-why"></a>:clipboard: Why
-If you want to create (or let others create) a type project multiple times, you probably execute some common commands and install the latest version of several packages.
+If you want to create (or let others create) a type of project multiple times, you probably execute some common commands and install the latest version of several packages.
 
 In effect, you create a "placeholder" builder for whatever type of app you are templating.  You can think of it as the equivalent of what `create-react-app` is for a React application.
 
