@@ -40,13 +40,12 @@ project creator: execute a set of standard processes and installations into a di
 # <a name="clipboard-why"></a>:clipboard: Why
 If you want to create (or let others create) a type of project multiple times, you probably execute some common commands and install the latest version of several packages.
 
-In effect, you create a "placeholder" builder for whatever type of app you are templating.  You can think of it as the equivalent of what `create-react-app` is for a React application.
+In effect, you go through standard steps for whatever type of app you are templating.  
+
+It would be nice to provide that easily for yourself or others.  Like a `create` package.
 
 # <a name="white_check_mark-what"></a>:white_check_mark: What
-An engine for executing a startup sequence.  The sequence is specified within a json that includes 
- specify a set of commands that you normally execute.
-
-You can add this to any sequence. 
+An function for executing a startup sequence.  The sequence is specified within a json that includes a set of commands that you normally execute. 
 
 # <a name="bulb-how"></a>:bulb: How
 Install:
