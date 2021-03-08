@@ -19,7 +19,7 @@
   "dependencies": {
     "@types/node": "^14.14.19",
     "chalk": "^4.1.0",
-    "dynamapping": "^1.0.1",
+    "dynamapping": "^1.0.5",
     "execa": "^5.0.0",
     "fs-extra": "^9.1.0",
     "js-yaml": "^3.14.1",
