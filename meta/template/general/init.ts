@@ -1,3 +1,4 @@
+const fullName = require('fullname')
 const gitUserName = require('git-user-name');
 const path = require('path')
 
@@ -7,7 +8,9 @@ module.exports = {
         const session = {
             notWin: process.platform !== "win32",
             userName: gitUserName(),
+            fullName: await fullName(),
             defaultProjectName,
+            year: new Date().getFullYear(),
         }
 
         return session

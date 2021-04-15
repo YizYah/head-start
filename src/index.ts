@@ -6,5 +6,6 @@ import {createStarter} from './custom/createStarter'
 /* types */
 
 /* ns__custom_start export */
+// replace this with your own export
 module.exports = createStarter
 /* ns__custom_end export */

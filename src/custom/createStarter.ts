@@ -12,6 +12,7 @@ export async function createStarter(
   setupSequence: SetupSequence,
   starterDir: string,
   session: any,
+  removeExistingStarter = true
 ) {
   if (!setupSequence) throw new Error('\'generate\' cannot run because ' +
     '\'setupSequence\' is undefined in the config of the template.' +
@@ -19,7 +20,7 @@ export async function createStarter(
 
   const {mainInstallation, devInstallation, preCommands, interactive} = setupSequence
 
-  await checkFolder(starterDir)
+  if (removeExistingStarter) await checkFolder(starterDir)
   if (interactive) await interactiveSequence(interactive, starterDir)
 
   const starterCreationTaskList = [
@@ -30,6 +31,7 @@ export async function createStarter(
         const preCommandsTasks = preCommandsTaskList(
           preCommands, starterDir, session
         ).filter(x => x !== null)
+
         return new Listr(preCommandsTasks)
       },
     },

@@ -9,6 +9,7 @@
 
 [//]: # ( ns__custom_start description )
 ![](src/custom/images/headstart.gif)
+
 project creator: execute a set of standard processes and installations into a directory
 
 [//]: # ( ns__custom_end description )
@@ -202,7 +203,6 @@ If need be, you can of course hardcode the version of a package listed in `mainI
 
 
 [//]: # ( ns__custom_start constantsIntro )
-## General Constants and Commands
 
 [//]: # ( ns__custom_end constantsIntro )
 

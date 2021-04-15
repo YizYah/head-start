@@ -1,3 +1,4 @@
+/* ns__file unit: standard, comp: .gitignore */
 *-debug.log
 *-error.log
 /.nyc_output
@@ -8,4 +9,6 @@
 node_modules
 .yalc
 yalc.lock
-.idea
+
+/* ns__custom_start extra */
+/* ns__custom_end extra */
