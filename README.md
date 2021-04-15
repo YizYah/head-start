@@ -104,7 +104,7 @@ const session = {
 }
 
 await createStarter(
-  setupSequence, codeDir, session
+  setupSequence, codeDir, session, false
 )
 ```
 
