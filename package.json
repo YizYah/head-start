@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/node": "^14.14.39",
-    "bash-fool": "^1.0.0",
+    "bash-fool": "^1.1.0",
     "chalk": "^4.1.0",
     "del": "^6.0.0",
     "dynamapping": "^1.6.0",
